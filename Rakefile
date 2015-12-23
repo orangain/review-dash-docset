@@ -19,6 +19,7 @@
 require 'erb'
 require 'rest_client'
 require "sqlite3"
+require 'nokogiri'
 
 task :default => :build
 task :build => [:render_html, :extract_indexes]
@@ -41,14 +42,22 @@ end
 
 task :extract_indexes do
   indexes = []
-  open(HTML_PATH).each_line.grep(/<\/h2>/) do |line|
-    line.match(/href="(?<href>.*?)".*<\/a>(?<name>.*?)<\/h2>/) do |m|
-      indexes.push({
-        name: m[:name],
-        type: 'Section',
-        path: "format.html#{m[:href]}",
-      })
-    end
+  doc = Nokogiri::HTML(open(HTML_PATH))
+  doc.css('h2').each do |h2|
+    a = h2.at_css('a')
+
+    index = {
+      name: h2.content.strip,
+      type: 'Section',
+      path: "format.html#{a['href']}",
+    }
+    indexes << index
+
+    a.add_next_sibling "<a name='//apple_ref/cpp/#{index[:type]}/#{ERB::Util.url_encode(index[:name])}' class='dashAnchor'></a>"
+  end
+
+  open(HTML_PATH, 'w') do |f|
+    f << doc.to_html
   end
 
   File.unlink DB_PATH if File.exist? DB_PATH
