@@ -56,7 +56,7 @@ task :extract_indexes do
 
     index = {
       name: h2.content.strip,
-      type: 'Section',
+      type: 'Guide',
       path: "format.html#{a['href']}",
     }
     indexes << index
@@ -85,9 +85,9 @@ task :extract_indexes do
 
     codes.each do |code|
       if /^\/\/(?<name>\w+)/ =~ code
-        type = 'Directive'
-      elsif /^@<(?<name>\w+)>/ =~ code
         type = 'Tag'
+      elsif /^@<(?<name>\w+)>/ =~ code
+        type = 'Command'
       elsif /#@(?<name>\w+)/ =~ code or /(?<name>#@#)/ =~ code
         type = 'Macro'
       else
