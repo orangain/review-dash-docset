@@ -118,5 +118,5 @@ task :extract_indexes do
 end
 
 task :tgz do
-  sh "tar --exclude='.DS_Store' -cvzf ReVIEW.tgz ReVIEW.docset"
+  sh "tar --exclude='.DS_Store' --exclude='*.swp' -cvzf ReVIEW.tgz ReVIEW.docset"
 end
