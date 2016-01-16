@@ -3,6 +3,8 @@ review-dash-docset
 
 [Re:VIEW](https://github.com/kmuto/review) docset for [Dash](https://kapeli.com/dash).
 
+![Screenshot of Re:VIEW Docset](https://raw.githubusercontent.com/orangain/review-dash-docset/master/screenshot.png)
+
 How to install docset in Dash
 -----------------------------
 
