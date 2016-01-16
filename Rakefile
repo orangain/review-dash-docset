@@ -24,10 +24,10 @@ require 'nokogiri'
 task :default => :build
 task :build => [:render_html, :extract_indexes]
 
-MARKDOWN_PATH = 'review.docset/Contents/Resources/Documents/format.md'
+MARKDOWN_PATH = 'ReVIEW.docset/Contents/Resources/Documents/format.md'
 TEMPLATE_PATH = 'template.erb'
-HTML_PATH = 'review.docset/Contents/Resources/Documents/format.html'
-DB_PATH = 'review.docset/Contents/Resources/docSet.dsidx'
+HTML_PATH = 'ReVIEW.docset/Contents/Resources/Documents/format.html'
+DB_PATH = 'ReVIEW.docset/Contents/Resources/docSet.dsidx'
 
 task :render_html do
   markdown_body = open(MARKDOWN_PATH).read

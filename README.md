@@ -30,7 +30,7 @@ bundle install --path=vendor/bundle
 bundle exec rake
 ```
 
-`review.docset` will be generated.
+`ReVIEW.docset` will be generated.
 
 
 References
