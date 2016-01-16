@@ -16,18 +16,26 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301
 # USA
 
+require 'open-uri'
 require 'erb'
 require 'rest_client'
 require "sqlite3"
 require 'nokogiri'
 
 task :default => :build
-task :build => [:render_html, :extract_indexes]
+task :build => [:download_markdown, :render_html, :extract_indexes]
 
+MARKDOWN_URL = 'https://github.com/kmuto/review/raw/v1.7.2/doc/format.md'
 MARKDOWN_PATH = 'ReVIEW.docset/Contents/Resources/Documents/format.md'
-TEMPLATE_PATH = 'template.erb'
 HTML_PATH = 'ReVIEW.docset/Contents/Resources/Documents/format.html'
 DB_PATH = 'ReVIEW.docset/Contents/Resources/docSet.dsidx'
+TEMPLATE_PATH = 'template.erb'
+
+task :download_markdown do
+  open(MARKDOWN_PATH, 'w') do |f|
+    f << open(MARKDOWN_URL).read
+  end
+end
 
 task :render_html do
   markdown_body = open(MARKDOWN_PATH).read
