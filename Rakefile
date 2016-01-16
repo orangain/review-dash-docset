@@ -54,6 +54,47 @@ task :extract_indexes do
     indexes << index
 
     a.add_next_sibling "<a name='//apple_ref/cpp/#{index[:type]}/#{ERB::Util.url_encode(index[:name])}' class='dashAnchor'></a>"
+
+    first_element = h2.next_element
+    second_element = h2.next_element.next_element
+    codes = []
+    # Find inline <code>s in <p>
+    if first_element.name == 'p'
+      codes += first_element.css('code').map{ |code| code.content }.to_a
+      #  codes << code.content
+      #end
+    end
+
+    # Find <code>s in <ul> immediately after <p>
+    if first_element.name == 'p' and second_element.name == 'ul'
+      codes += second_element.css('code').map{ |code| code.content }.to_a
+    end
+
+    # Find <pre> blocks which is not an usage
+    if first_element.name == 'pre'
+      codes += first_element.at_css('code').content.each_line.to_a
+    elsif first_element.name == 'p' and second_element.name == 'pre'
+      codes += second_element.at_css('code').content.each_line.to_a
+    end
+
+    codes.each do |code|
+      if /^\/\/(?<name>\w+)/ =~ code
+        type = 'Directive'
+      elsif /^@<(?<name>\w+)>/ =~ code
+        type = 'Tag'
+      elsif /#@(?<name>\w+)/ =~ code or /(?<name>#@#)/ =~ code
+        type = 'Macro'
+      else
+        next
+      end
+      next if indexes.find_index { |i| i[:name] == name and i[:type] == type }
+
+      indexes << {
+        name: name,
+        type: type,
+        path: "format.html#{a['href']}",
+      }
+    end
   end
 
   open(HTML_PATH, 'w') do |f|
