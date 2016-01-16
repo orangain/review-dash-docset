@@ -7,13 +7,13 @@ How to install docset in Dash
 -----------------------------
 
 1. Clone this repository.
-2. Double click `review.docset` to add the docset to Dash.
+2. Double click `ReVIEW.docset` to add the docset to Dash.
 
 
 How to build
 ------------
 
-### Requirements
+### Prerequisites
 
 * Ruby 2.0+
 * Bundler
@@ -21,13 +21,14 @@ How to build
 ### Prepare
 
 ```
-bundle install --path=vendor/bundle
+$ git clone https://github.com/orangain/review-dash-docset
+$ bundle install --path=vendor/bundle
 ```
 
 ### Generate docset
 
 ```
-bundle exec rake
+$ bundle exec rake
 ```
 
 `ReVIEW.docset` will be generated.
