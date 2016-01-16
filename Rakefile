@@ -61,8 +61,6 @@ task :extract_indexes do
     # Find inline <code>s in <p>
     if first_element.name == 'p'
       codes += first_element.css('code').map{ |code| code.content }.to_a
-      #  codes << code.content
-      #end
     end
 
     # Find <code>s in <ul> immediately after <p>
