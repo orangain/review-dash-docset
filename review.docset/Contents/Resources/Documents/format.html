@@ -1,5 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
-<html><head>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
+<title>Re:VIEW Format Guide</title>
 <link rel="stylesheet" href="github-markdown.css">
 <style>
     .markdown-body {
@@ -9,6 +13,8 @@
         padding: 30px;
     }
 </style>
+</head>
+<body>
 <article class="markdown-body">
     <h1>
 <a id="review-format-guide" class="anchor" href="#review-format-guide" aria-hidden="true"><span class="octicon octicon-link"></span></a>Re:VIEW Format Guide</h1>
@@ -189,7 +195,7 @@ After dt line, space-indented lines are descriptions(dd in HTML).</p>
 
 <p>Usage:</p>
 
-<pre lang="review"><code>//list[main][main()][c]{    &acirc;&#134;&#144;ID is `main`, caption is `main()`
+<pre lang="review"><code>//list[main][main()][c]{    ←ID is `main`, caption is `main()`
 int
 main(int argc, char **argv)
 {
@@ -282,7 +288,7 @@ When publishing, it's simply ignored.</p>
 
 <pre><code>//image[unixhistory][a brief history of UNIX-like OS]{
           System V
-            +----------- SVr4 --&gt; Commercial UNIX&iuml;&frac14;&#136;Solaris, AIX, HP-UX, ...&iuml;&frac14;&#137;
+            +----------- SVr4 --&gt; Commercial UNIX（Solaris, AIX, HP-UX, ...）
 V1 --&gt; V6 --|
             +--------- 4.4BSD --&gt; FreeBSD, NetBSD, OpenBSD, ...
           BSD
@@ -384,7 +390,7 @@ DISPLAY         default display of X Window System
 <h2>
 <a id="quoting-text" class="anchor" href="#quoting-text" aria-hidden="true"><span class="octicon octicon-link"></span></a><a name="//apple_ref/cpp/Section/Quoting%20text" class="dashAnchor"></a>Quoting text</h2>
 
-<p>You can use <code>//quote{ &atilde;&#128;&#156; //}</code> as quotations.</p>
+<p>You can use <code>//quote{ 〜 //}</code> as quotations.</p>
 
 <p>Usage:</p>
 
@@ -453,7 +459,7 @@ Computing Laboratory, The University of Kent at Canterbury , August
 
 <p>Usage:</p>
 
-<pre><code>&acirc;&#128;&brvbar; is the well-known project.(@&lt;bib&gt;{lins})
+<pre><code>… is the well-known project.(@&lt;bib&gt;{lins})
 </code></pre>
 
 <h2>
@@ -760,4 +766,5 @@ Default locale configuration file is in lib/review/i18n.yml.</p>
 <span class="pl-s"><span class="pl-ent">table:</span> <span class="pl-s">Tbl.</span></span></pre></div>
 
 </article>
-</head></html>
+</body>
+</html>
