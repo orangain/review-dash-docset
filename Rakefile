@@ -23,7 +23,7 @@ require "sqlite3"
 require 'nokogiri'
 
 task :default => :build
-task :build => [:download_markdown, :render_html, :extract_indexes]
+task :build => [:download_markdown, :render_html, :extract_indexes, :tgz]
 
 MARKDOWN_URL = 'https://github.com/kmuto/review/raw/v1.7.2/doc/format.md'
 MARKDOWN_PATH = 'ReVIEW.docset/Contents/Resources/Documents/format.md'
@@ -115,4 +115,8 @@ task :extract_indexes do
     db.execute 'INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?, ?, ?)',
       index[:name], index[:type], index[:path]
   end
+end
+
+task :tgz do
+  sh "tar --exclude='.DS_Store' -cvzf ReVIEW.tgz ReVIEW.docset"
 end
