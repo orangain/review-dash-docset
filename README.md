@@ -5,12 +5,12 @@ review-dash-docset
 
 ![Screenshot of Re:VIEW Docset](https://raw.githubusercontent.com/orangain/review-dash-docset/master/screenshot.png)
 
-How to install docset in Dash
------------------------------
+How to use the docset
+---------------------
 
-1. Clone this repository.
-2. Double click `ReVIEW.docset` to add the docset to Dash.
-
+1. Open Preferences > Downloads > User Contributed.
+2. Search the Re:VIEW docset.
+3. Download it.
 
 How to build
 ------------
